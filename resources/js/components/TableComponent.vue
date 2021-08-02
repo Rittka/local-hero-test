@@ -5,11 +5,34 @@
     :items-per-page="5"
 
     class="elevation-1"
-  >  <tr>
-          <td :colspan="headers.length">
-            This is an appended row
+>  <template
+
+        v-slot:body.append="{ headers }"
+      >
+        <tr>
+          <td>
+                Summary
           </td>
-        </tr></v-data-table>
+           <td>
+                {{ totalHotel }}
+          </td>
+           <td>
+                {{ totalGym }}
+          </td>
+           <td>
+                {{ totalArtz }}
+          </td>
+           <td >
+                {{ totalRestaurant }}
+          </td>
+           <td>
+                {{ totalHospital}}
+          </td>
+           <td>
+              {{ totalSchool}}
+          </td>
+        </tr>
+      </template></v-data-table>
 
 
 
@@ -21,6 +44,8 @@
   export default {
     data () {
       return {
+           slots: [ 'body.append'],
+
 
         headers: [
             {
@@ -63,11 +88,32 @@
     },
      computed: {
         totalHotel () {
-        console.log('get current total')
-        return this.items.reduce((acc, cur) => acc + Number(cur.Current), 0);
-    },
-     }
 
+        return this.rows.reduce((acc, cur) => acc + Number(cur.Hotel), 0);
+    },
+        totalGym () {
+
+        return this.rows.reduce((acc, cur) => acc + Number(cur.Gym), 0);
+    },
+        totalArtz () {
+
+        return this.rows.reduce((acc, cur) => acc + Number(cur.Artz), 0);
+    },
+        totalRestaurant () {
+
+        return this.rows.reduce((acc, cur) => acc + Number(cur.Restaurant), 0);
+    },
+       totalHospital () {
+
+        return this.rows.reduce((acc, cur) => acc + Number(cur.Hospital), 0);
+    },
+       totalSchool () {
+
+        return this.rows.reduce((acc, cur) => acc + Number(cur.School), 0);
+    },
+
+
+     }
   }
 
 </script>

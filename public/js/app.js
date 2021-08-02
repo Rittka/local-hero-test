@@ -1955,9 +1955,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      slots: ['body.append'],
       headers: [{
         text: 'Name',
         align: 'start',
@@ -2004,9 +2028,33 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     totalHotel: function totalHotel() {
-      console.log('get current total');
-      return this.items.reduce(function (acc, cur) {
-        return acc + Number(cur.Current);
+      return this.rows.reduce(function (acc, cur) {
+        return acc + Number(cur.Hotel);
+      }, 0);
+    },
+    totalGym: function totalGym() {
+      return this.rows.reduce(function (acc, cur) {
+        return acc + Number(cur.Gym);
+      }, 0);
+    },
+    totalArtz: function totalArtz() {
+      return this.rows.reduce(function (acc, cur) {
+        return acc + Number(cur.Artz);
+      }, 0);
+    },
+    totalRestaurant: function totalRestaurant() {
+      return this.rows.reduce(function (acc, cur) {
+        return acc + Number(cur.Restaurant);
+      }, 0);
+    },
+    totalHospital: function totalHospital() {
+      return this.rows.reduce(function (acc, cur) {
+        return acc + Number(cur.Hospital);
+      }, 0);
+    },
+    totalSchool: function totalSchool() {
+      return this.rows.reduce(function (acc, cur) {
+        return acc + Number(cur.School);
       }, 0);
     }
   }
@@ -38373,20 +38421,63 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "v-data-table",
-    {
-      staticClass: "elevation-1",
-      attrs: { headers: _vm.headers, items: _vm.rows, "items-per-page": 5 }
-    },
-    [
-      _c("tr", [
-        _c("td", { attrs: { colspan: _vm.headers.length } }, [
-          _vm._v("\n          This is an appended row\n        ")
-        ])
-      ])
-    ]
-  )
+  return _c("v-data-table", {
+    staticClass: "elevation-1",
+    attrs: { headers: _vm.headers, items: _vm.rows, "items-per-page": 5 },
+    scopedSlots: _vm._u([
+      {
+        key: "body.append",
+        fn: function(ref) {
+          var headers = ref.headers
+          return [
+            _c("tr", [
+              _c("td", [_vm._v("\n                Summary\n          ")]),
+              _vm._v(" "),
+              _c("td", [
+                _vm._v(
+                  "\n                " + _vm._s(_vm.totalHotel) + "\n          "
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _vm._v(
+                  "\n                " + _vm._s(_vm.totalGym) + "\n          "
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _vm._v(
+                  "\n                " + _vm._s(_vm.totalArtz) + "\n          "
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.totalRestaurant) +
+                    "\n          "
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.totalHospital) +
+                    "\n          "
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _vm._v(
+                  "\n              " + _vm._s(_vm.totalSchool) + "\n          "
+                )
+              ])
+            ])
+          ]
+        }
+      }
+    ])
+  })
 }
 var staticRenderFns = []
 render._withStripped = true
