@@ -1,6 +1,6 @@
 <template>
 
-     <v-select multiple v-model="selected" :options="['Ross','Rachel' ,'Joye' ,'Chandller','Pheobe' ,'Monica' ,'Suzan' ,'Ben']" />
+     <v-select multiple  v-model="selected" :options="['Ross','Rachel' ,'Joye' ,'Chandller','Pheobe' ,'Monica' ,'Suzan' ,'Ben']" />
 
 </template>
 

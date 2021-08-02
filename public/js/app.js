@@ -1947,13 +1947,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       headers: [{
-        text: 'Hotel',
+        text: 'Name',
         align: 'start',
         sortable: false,
+        value: 'name',
+        filterable: true
+      }, {
+        text: 'Hotel',
         value: 'Hotel'
       }, {
         text: 'Gym',
@@ -1984,13 +1996,19 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         // handle error
         console.log(error);
-      }).then(function () {// always executed
       });
     }
   },
   created: function created() {
-    console.log(this.rows);
     this.getData();
+  },
+  computed: {
+    totalHotel: function totalHotel() {
+      console.log('get current total');
+      return this.items.reduce(function (acc, cur) {
+        return acc + Number(cur.Current);
+      }, 0);
+    }
   }
 });
 
@@ -38355,10 +38373,20 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("v-data-table", {
-    staticClass: "elevation-1",
-    attrs: { headers: _vm.headers, items: _vm.rows, "items-per-page": 5 }
-  })
+  return _c(
+    "v-data-table",
+    {
+      staticClass: "elevation-1",
+      attrs: { headers: _vm.headers, items: _vm.rows, "items-per-page": 5 }
+    },
+    [
+      _c("tr", [
+        _c("td", { attrs: { colspan: _vm.headers.length } }, [
+          _vm._v("\n          This is an appended row\n        ")
+        ])
+      ])
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

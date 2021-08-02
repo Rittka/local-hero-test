@@ -3,8 +3,16 @@
     :headers="headers"
     :items="rows"
     :items-per-page="5"
+
     class="elevation-1"
-  ></v-data-table>
+  >  <tr>
+          <td :colspan="headers.length">
+            This is an appended row
+          </td>
+        </tr></v-data-table>
+
+
+
 
 
 
@@ -16,12 +24,13 @@
 
         headers: [
             {
-                text: 'Hotel',
+                text: 'Name',
                 align: 'start',
                 sortable: false,
-                value: 'Hotel',
+                value: 'name',
+                filterable: true,
             },
-
+            { text: 'Hotel', value: 'Hotel' },
             { text: 'Gym', value: 'Gym' },
             { text: 'Artz', value: 'Artz' },
             { text: 'Restaurant', value: 'Restaurant' },
@@ -33,27 +42,31 @@
     },
     methods:{
         getData(){
-axios.get('/get-data')
-    .then((response)=> {
-        // handle success
+                axios.get('/get-data')
+                .then((response)=> {
+                    // handle success
 
-        this.rows = response.data;
+                     this.rows = response.data;
 
 
-    })
-    .catch(function(error) {
-        // handle error
-        console.log(error);
-    })
-    .then(function() {
-        // always executed
-    });
+
+                })
+                .catch(function(error) {
+                    // handle error
+                    console.log(error);
+                });
         }
     },
      created() {
-         console.log(this.rows);
-this.getData()
-        },
+
+            this.getData();
+    },
+     computed: {
+        totalHotel () {
+        console.log('get current total')
+        return this.items.reduce((acc, cur) => acc + Number(cur.Current), 0);
+    },
+     }
 
   }
 
