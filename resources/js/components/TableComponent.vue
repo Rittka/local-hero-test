@@ -9,7 +9,7 @@
 
         v-slot:body.append="{ headers }"
       >
-        <tr>
+        <tr class="font-weight-bold">
           <td>
                 Summary
           </td>

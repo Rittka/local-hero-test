@@ -38430,7 +38430,7 @@ var render = function() {
         fn: function(ref) {
           var headers = ref.headers
           return [
-            _c("tr", [
+            _c("tr", { staticClass: "font-weight-bold" }, [
               _c("td", [_vm._v("\n                Summary\n          ")]),
               _vm._v(" "),
               _c("td", [
